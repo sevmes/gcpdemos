@@ -1,7 +1,7 @@
 variable "project_id" {
-  description = "gab-devops-3-413719"
+  description = "sevm-devops"
   type        = string
-  default = "gab-devops-3-413719"
+  default = "sevm-devops"
 }
 
 variable "region" {
@@ -29,14 +29,14 @@ variable "github_config_app_installation_id" {
 }
 
 variable "google_cloudbuildv2_repository_remote_uri" {
-  description = "https://github.com/gbechara/gcpdemos.git"
+  description = "https://github.com/sevmes/gcpdemos.git"
   type        = string
-  default = "https://github.com/gbechara/gcpdemos.git"
+  default = "https://github.com/sevmes/gcpdemos.git"
 }
 
 variable "google_configmanagement_sync_repo" {
-  description = "https://github.com/gbechara/gcpdemos/"
+  description = "https://github.com/sevmes/gcpdemos/"
   type        = string
-  default = "https://github.com/gbechara/gcpdemos/"
+  default = "https://github.com/sevmes/gcpdemos/"
 }
 
