@@ -21,7 +21,7 @@ metadata:
 spec:
   hostnames:
 #  - "app.prod.gabrielbechara.com"
-  - "app.prod.sevm-devops.gabrielbechara.demo.altostrat.com"
+  - "app.prod.qwiklabs-gcp-02-aa672ab958c7.gabrielbechara.demo.altostrat.com"
   parentRefs:
   - name: app
   rules:

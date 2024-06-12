@@ -182,6 +182,7 @@ resource "google_container_cluster" "example_cluster" {
   networking_mode =  "VPC_NATIVE"
   enable_shielded_nodes = true
   default_max_pods_per_node = 30
+  deletion_protection = false
   #cluster_autoscaling {
   #  enabled = true
   #  resource_limits {
@@ -736,7 +737,7 @@ resource "google_cloudbuildv2_connection" "my_connection" {
     location = var.region
     name = "my-github-connection"
     github_config {
-        app_installation_id = var.github_config_app_installation_id
+        app_installation_id = 51756002
         authorizer_credential {
             oauth_token_secret_version = "projects/${var.project_number}/secrets/my-github-secret/versions/1"
         }
@@ -749,7 +750,7 @@ resource "google_cloudbuildv2_connection" "my_connection" {
 resource "google_cloudbuildv2_repository" "google_cloudbuildv2_repository_gbechara" {
     project  = var.project_id
     location   = var.region
-    name = "gbechara"
+    name = "github-repository"
     parent_connection = google_cloudbuildv2_connection.my_connection.name
     remote_uri = var.google_cloudbuildv2_repository_remote_uri
     depends_on = [google_project_service.project_googleapis_cloudbuild]
@@ -771,45 +772,45 @@ resource "google_cloudbuild_trigger" "google_cloudbuild_trigger_devopsdemo1_tigg
   depends_on = [google_project_service.project_googleapis_cloudbuild]
 }
 
-resource "google_workstations_workstation_cluster" "workstation_cluster" {
-  project  = var.project_id
-  provider = google-beta
-  workstation_cluster_id = "my-workstation-cluster"
-  location = var.region
-  network = google_compute_network.project_vpc_devops.id
-  subnetwork = "projects/${var.project_id}/regions/${var.region}/subnetworks/vpc-devops"
-  labels = {
-    env = "dev"
-  }
-  depends_on = [google_project_service.project_googleapis_workstations]
-}
+# resource "google_workstations_workstation_cluster" "workstation_cluster" {
+#   project  = var.project_id
+#   provider = google-beta
+#   workstation_cluster_id = "my-workstation-cluster"
+#   location = var.region
+#   network = google_compute_network.project_vpc_devops.id
+#   subnetwork = "projects/${var.project_id}/regions/${var.region}/subnetworks/vpc-devops"
+#   labels = {
+#     env = "dev"
+#   }
+#   depends_on = [google_project_service.project_googleapis_workstations]
+# }
 
-resource "google_workstations_workstation_config" "workstation_config" {
-  project  = var.project_id
-  provider = google-beta
-  workstation_config_id = "my-workstation-config"
-  workstation_cluster_id = google_workstations_workstation_cluster.workstation_cluster.workstation_cluster_id
-  location  = var.region
+# resource "google_workstations_workstation_config" "workstation_config" {
+#   project  = var.project_id
+#   provider = google-beta
+#   workstation_config_id = "my-workstation-config"
+#   workstation_cluster_id = google_workstations_workstation_cluster.workstation_cluster.workstation_cluster_id
+#   location  = var.region
 
-   host {
-    gce_instance {
-      machine_type  = "e2-standard-4"
-      boot_disk_size_gb = 50
-      service_account = "${var.project_number}-compute@developer.gserviceaccount.com"
-      #disable_public_ip_addresses = true
-    }
-  }
+#    host {
+#     gce_instance {
+#       machine_type  = "e2-standard-4"
+#       boot_disk_size_gb = 50
+#       service_account = "${var.project_number}-compute@developer.gserviceaccount.com"
+#       #disable_public_ip_addresses = true
+#     }
+#   }
 
-  persistent_directories {
-    mount_path = "/home"
-    gce_pd {
-      size_gb        = 200
-      fs_type        = "ext4"
-      # disk_type      = "pd-ssd"
-      disk_type      = "pd-standard"
-      reclaim_policy = "DELETE"
-    }
-  }
+#   persistent_directories {
+#     mount_path = "/home"
+#     gce_pd {
+#       size_gb        = 200
+#       fs_type        = "ext4"
+#       # disk_type      = "pd-ssd"
+#       disk_type      = "pd-standard"
+#       reclaim_policy = "DELETE"
+#     }
+#   }
 
-  depends_on = [google_project_service.project_googleapis_compute]
-}
+#   depends_on = [google_project_service.project_googleapis_compute]
+# }

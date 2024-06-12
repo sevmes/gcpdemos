@@ -27,10 +27,10 @@ spec:
         image: writers
         env:
         - name: INSTANCE_CONNECTION_NAME
-          value: sevm-devops:us-central1:devopsdemo-instance
+          value: qwiklabs-gcp-02-aa672ab958c7:us-central1:devopsdemo-instance
         - name: DB_PORT
           value: "3306"
         - name: DB_IAM_USER
-          value: cloudsql-sa@sevm-devops.iam
+          value: cloudsql-sa@qwiklabs-gcp-02-aa672ab958c7.iam
         - name: DB_NAME
           value: quotes-app-db

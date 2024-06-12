@@ -407,7 +407,7 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT_ID \
   --member="serviceAccount:llm-sa@$GOOGLE_CLOUD_PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/aiplatform.user"
 
-gcloud beta services identity create --service=iap.googleapis.com --project=sevm-devops  
+gcloud beta services identity create --service=iap.googleapis.com --project=qwiklabs-gcp-02-aa672ab958c7  
 ```
 
 Create certificate for HPPT LB used by IAP

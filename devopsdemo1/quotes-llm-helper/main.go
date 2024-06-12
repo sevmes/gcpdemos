@@ -232,7 +232,7 @@ func callLLMChatBison(prompt string, c *gin.Context) PalmResponseChatBison {
 	region := "us-central1"
 	//modelName := "chat-bison"
 	modelName := "chat-bison@001"
-	projectId := "sevm-devops"
+	projectId := "qwiklabs-gcp-02-aa672ab958c7"
 
 	palmClient := NewClient(region, projectId, modelName, c)
 
@@ -270,7 +270,7 @@ func callLLMTextBison(prompt string, c *gin.Context) PalmResponseTextBison {
 	region := "us-central1"
 	//modelName := "text-bison"
 	modelName := "text-bison@001"
-	projectId := "sevm-devops"
+	projectId := "qwiklabs-gcp-02-aa672ab958c7"
 	
 	palmClient := NewClient(region, projectId, modelName, c)
 	response, err := palmClient.CallPalmApiTextBison(prompt, nil)
@@ -297,8 +297,8 @@ func NewClient(region string, projectId string, modelName string, c *gin.Context
 
 func (p *PalmClient) createPalmURL(region string, projectId string, modelName string) string {
 	//return fmt.Sprintf("https://%s-aiplatform.googleapis.com/v1/projects/%s/locations/%s/publishers/google/models/%s:predict -d", region, projectId, region, modelName)
-	//return "https://us-central1-aiplatform.googleapis.com/v1/projects/sevm-devops/locations/us-central1/publishers/google/models/chat-bison:predict -d"
-	//return "https://us-central1-aiplatform.googleapis.com/v1/projects/sevm-devops/locations/us-central1/publishers/google/models/chat-bison:predict"
+	//return "https://us-central1-aiplatform.googleapis.com/v1/projects/qwiklabs-gcp-02-aa672ab958c7/locations/us-central1/publishers/google/models/chat-bison:predict -d"
+	//return "https://us-central1-aiplatform.googleapis.com/v1/projects/qwiklabs-gcp-02-aa672ab958c7/locations/us-central1/publishers/google/models/chat-bison:predict"
 	return fmt.Sprintf("https://%s-aiplatform.googleapis.com/v1/projects/%s/locations/%s/publishers/google/models/%s:predict", region, projectId, region, modelName)
 }
 

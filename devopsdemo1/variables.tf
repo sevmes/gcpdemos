@@ -1,7 +1,7 @@
 variable "project_id" {
-  description = "sevm-devops"
+  description = "qwiklabs-gcp-02-aa672ab958c7"
   type        = string
-  default = "sevm-devops"
+  default = "qwiklabs-gcp-02-aa672ab958c7"
 }
 
 variable "region" {
@@ -17,15 +17,15 @@ variable "zone" {
 }
 
 variable "project_number" {
-  description = "284559639714"
+  description = "63859852665"
   type        = string
-  default = "284559639714"
+  default = "63859852665"
 }
 
 variable "github_config_app_installation_id" {
-  description = "12345678"
+  description = "Iv1.3fc8f5d434e3fe5f"
   type        = string
-  default = "12345678"
+  default = "Iv1.3fc8f5d434e3fe5f"
 }
 
 variable "google_cloudbuildv2_repository_remote_uri" {
